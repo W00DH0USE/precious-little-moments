@@ -1,0 +1,208 @@
+h1 {
+  font-size: 45px;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 500
+}
+
+h3 {
+  font-size: 30px;
+}
+
+p {
+  font-size: 21px;
+  font-weight: 400;
+  color: #333;
+}
+
+.LandingPage__App {
+  margin-top: -30px !important;
+}
+
+.LandingPage__container {
+  text-align: center;
+}
+
+.LandingPage__container {
+  animation: moveInBottom ease-out .75s;
+}
+
+.LandingPage__banner {
+  /* background-color: #fff; */
+  background-image: url("../../images/banner.jpg");
+  height: calc(100vh - 200px);
+}
+
+.heading {
+  font-family: "Times New Roman",Georgia,Times,serif;
+  font-weight: 500;
+  line-height: 1.1;
+  padding-top: 200px;
+}
+
+.LandingPage-hr {
+  background: linear-gradient(to right,rgb(0, 0, 0), rgb(97, 97, 97), rgb(0, 0, 0));
+  height: 1px;
+  border: none;
+  width: 40%;
+}
+
+.LandingPage__Tagline {
+  width: 45%;
+  margin: auto auto;
+}
+
+.demo-button{
+  width: 200px;
+  font-size: 25px;
+  margin-top: 45px;
+  transition: .3s;
+  background-color: #ee432e;
+  border-color: #ec2e16;
+  color: #fff;
+}
+
+.demo-button:hover {
+  transform: translateY(-5px) scale(1.1);
+  cursor: pointer;
+}
+
+.bgimage {
+  background-image: url(https://new.thelittlememory.com/assets/images/leather-6f6902d873a5b06d39660840e6e22162.png);
+  text-align: left;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.features,
+.HomePage__Footer {
+  background-image: url(https://new.thelittlememory.com/assets/images/leather-6f6902d873a5b06d39660840e6e22162.png);
+}
+
+.features {
+  padding-top: 1.6em;
+  padding-bottom: 2em;
+}
+
+.col-left h2 {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: "Times New Roman",Georgia,Times,serif;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.col-left p {
+  margin: 0 0 10px;
+  line-height: 1.42857;
+  color: #333;
+}
+
+.joinNow-button {
+  margin-top: 0;
+}
+
+.img-responsive1,
+.img-responsive2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.img-responsive1 {
+  max-width: auto;
+  height: 250px;
+}
+
+.col-left {
+  width: 50%;
+  float: left;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.col-right {
+  left: 8.33333%;
+  width: 41.66667%;
+  float: left;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.HomePage__Footer {
+  text-align: center;
+}
+
+.HomePage__Footer__Text {
+  font-weight: 600;
+  margin-top: -11px;
+  padding-top: 80px;
+}
+
+.HomePage__Footer__Text a {
+  text-decoration: none;
+  color: #ec2e16;
+  transition: all .4s;
+}
+
+.HomePage__Footer__Text a:hover {
+  color: #0e76a8;
+}
+
+.HomePage__Footer__Icon {
+  margin: 0 5px;
+  font-size: 160%;
+  transition: all .4s;
+  color: #ec2e16;
+}
+
+.Linkedin__Icon:hover {
+  color: #0e76a8;
+}
+
+.Github__Icon:hover {
+  color: #000;
+}
+
+.HomePage__Footer__Copyright {
+  font-size: 80%;
+  margin-bottom: 0;
+  padding-bottom: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+
+  login-button, reg-button {
+    display: inline-block;
+    width: 200px;
+    margin: 50px 25px;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 25px;
+  } 
+
+  .container {
+    max-width: 730px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .features p {
+    margin: 10px auto;
+  }
+
+  .container {
+    width: 1170px;
+}
+}

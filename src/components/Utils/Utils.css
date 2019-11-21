@@ -1,0 +1,109 @@
+
+.Hyph {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+label{
+  font-size:15px;
+  font-weight:700;
+  display: block;
+}
+
+.Input,
+.Textarea {
+  border: 1px solid #ddd;
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.Input::placeholder,
+.Textarea::placeholder {
+  color: #ccc;
+}
+
+.Textarea {
+  resize: vertical;
+}
+
+.Button {
+  order: 1px solid #aaa;
+  background-color: #eee;
+  font-size: 1.1em;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+
+.Required {
+  color: #CA1551;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.Section {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.Section--list {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.Form {
+  width: 60%;
+  height: 450px;
+  margin:100px auto 0;
+  padding:50px;
+  color:#333;
+  border:2px solid #777;
+  border-radius:40px;
+  text-align: center;
+}
+
+.Form__title {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1.00em;
+  font-weight: normal;
+  color: #222;
+  font-family: "Times New Roman","Georgia",serif;
+}
+
+.Form__title span {
+  color: red;
+}
+
+.Input2,
+.Textarea {
+  margin: auto auto;
+  border:1px solid #DADADA;
+  margin-top:20px;
+  margin-bottom:10px;
+  padding-left: 2%;
+  height: 25px;
+  width: 200px;
+  box-shadow:0 0 8px;
+  -webkit-box-shadow:0 0 8px;
+  border-radius:5px;
+  border:1px solid #cbcbcb;
+}
+
+@media only screen and (min-width: 768px) {
+  .Form {
+    width: 450px;
+    height: 400px;
+  } 
+  .Input2 {
+    width: 250px;
+  }
+  .Textarea {
+    width: 90%;
+    height: 120px;
+  }
+}

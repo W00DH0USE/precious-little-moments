@@ -1,0 +1,98 @@
+.profile-main {
+  width: 90%;
+  margin: 0 auto;
+  font-family: "Times New Roman",Georgia,Times,serif;
+}
+
+.profile-main .heading {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.moments {
+  margin: 0 auto;
+  width: 95%;
+}
+
+.moments-title {
+  text-align: center;
+}
+
+.cards {
+  margin: 5% auto;
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  width: 50%;
+}
+
+.card_image img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.card_content {
+  padding: 1rem;
+  /* background: linear-gradient(to bottom left, rgb(250, 165, 96) 40%, #FFC39E 100%); */
+  background-color: #000;
+}
+
+.card_title {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.card_text {
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;    
+  font-weight: 400;
+}
+
+.card_date {
+  color: #fff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;    
+  font-weight: 400;
+}
+
+.card-button {
+  color: #ffffff;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display:inline-block;
+  width: 47%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  margin: 5px;
+  transition: 0.5s;
+}
+
+.delete-post-button:hover {
+  background-color: red;
+}
+
+.update-post-button:hover {
+  background-color: greenyellow;
+}
+
+.delete-account-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 104px;
+  font-size: 12px;
+}

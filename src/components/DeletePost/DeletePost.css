@@ -1,0 +1,13 @@
+.delete-post-form {
+  background-color: #fff;
+  height: 350px;
+}
+
+.delete-post-title {
+  font-size: 24px;
+}
+
+.delete-warning {
+  color: red;
+  font-size: 15px;
+}
