@@ -4,8 +4,24 @@ import { Link } from "react-router-dom";
 import TokenService from "../../services/token-service";
 
 export default class Header extends Component {
-   handleLogoutClick = () => {
-    TokenService.clearAuthToken()
+  constructor(props) {
+    super(props); 
+    this.state = {
+      loggedIn: false
+    };
+  }
+
+  componentDidMount() {
+    if (TokenService.hasAuthToken()) {
+      this.setState({ loggedIn: true });
+    } else {
+      this.setState({ loggedIn: false });
+    }
+  }
+
+  handleLogoutClick = () => {
+    TokenService.clearAuthToken();
+    this.setState({ loggedIn: false });
   }
 
   renderLogoutLink() {
@@ -25,7 +41,7 @@ export default class Header extends Component {
           Logout
         </Link>
       </div>
-    )
+    );
   }
   
   renderLoginLink() {
@@ -40,9 +56,11 @@ export default class Header extends Component {
           Sign Up
         </Link>
       </div>
-    )
+    );
   }
+
   render() {
+    console.log("Header");
     return (
       <nav className="Header" style={{ borderBottom: "1px solid #eee" }}>
         <h1>

@@ -80,7 +80,6 @@ class App extends Component {
         }
       })
       .then(() => {
-        this.setState({posts: this.state.posts.filter(post => post.owner !== this.state.user.id)})
         TokenService.clearAuthToken()
         window.location.href='/'
       })
