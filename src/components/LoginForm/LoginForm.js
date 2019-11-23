@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Redirect } from 'react-router';
 import { Button, Form, Input2 , Required} from "../Utils/Utils";
 import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
@@ -9,12 +10,13 @@ class LoginForm extends React.Component {
     this.state = {
       error: "",
       logInError: false,
-    }
+      // userLoggedIn: false
+    };
   }
 
   handleLogin = e => {
     e.preventDefault();
-    const { email, password } = e.target
+    const { email, password } = e.target;
     AuthApiService.postLogin({
       email: email.value,
       password: password.value
@@ -30,6 +32,7 @@ class LoginForm extends React.Component {
         email.value = ''
         password.value = ''
         TokenService.saveAuthToken(user.authToken);
+        // this.setState({ userLoggedIn: true });
         window.location.href = '/profile'
       })
       .catch(err => {
@@ -38,6 +41,9 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    // if (this.state.userLoggedIn) {
+    //   return <Redirect to="/profile" />
+    // }
     return (
       <Form className="LoginForm" onSubmit={this.handleLogin}>
         <div role="alert">{this.logInError ? <p style={{ color: "red" }}>Incorrect Email or Password</p> : null}</div>

@@ -103,7 +103,7 @@ export default class RegistrationForm extends Component {
             autoComplete="off"
           ></Input2>
         </div>
-        <Button className="button demo-button" type="submit">Register</Button>
+        <Button className="button demo-button" type="submit" style={{ width: "200px" }}>Register</Button>
       </Form>
     );
   }

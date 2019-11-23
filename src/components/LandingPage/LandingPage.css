@@ -30,8 +30,7 @@ p {
 }
 
 .LandingPage__banner {
-  /* background-color: #fff; */
-  background-image: url("../../images/banner.jpg");
+  background-color: #fff;
   height: calc(100vh - 200px);
 }
 
@@ -39,7 +38,8 @@ p {
   font-family: "Times New Roman",Georgia,Times,serif;
   font-weight: 500;
   line-height: 1.1;
-  padding-top: 200px;
+  padding-top: 70px;
+  margin: 0 0.67em 0;
 }
 
 .LandingPage-hr {
@@ -50,14 +50,14 @@ p {
 }
 
 .LandingPage__Tagline {
-  width: 45%;
+  width: 80%;
   margin: auto auto;
 }
 
 .demo-button{
-  width: 200px;
+  width: 100px;
   font-size: 25px;
-  margin-top: 45px;
+  margin-top: 15px;
   transition: .3s;
   background-color: #ee432e;
   border-color: #ec2e16;
@@ -72,6 +72,11 @@ p {
 .bgimage {
   background-image: url(https://new.thelittlememory.com/assets/images/leather-6f6902d873a5b06d39660840e6e22162.png);
   text-align: left;
+  padding-top: 2em;
+}
+
+.features {
+  align-items: center;
 }
 
 .container {
@@ -87,6 +92,16 @@ p {
 .features {
   padding-top: 1.6em;
   padding-bottom: 2em;
+  text-align: center;
+}
+
+.col-top {
+  width: 100%;
+  display: block;
+}
+
+.col-right-alt {
+  display: none;
 }
 
 .col-left h2 {
@@ -106,6 +121,7 @@ p {
 
 .joinNow-button {
   margin-top: 0;
+  width: 150px;
 }
 
 .img-responsive1,
@@ -124,19 +140,17 @@ p {
 
 .col-left {
   width: 50%;
-  float: left;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin:  20px auto;
 }
 
 .col-right {
   left: 8.33333%;
   width: 41.66667%;
-  float: left;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
+  margin: 0 auto;
 }
 
 .HomePage__Footer {
@@ -184,15 +198,48 @@ p {
 
   login-button, reg-button {
     display: inline-block;
-    width: 200px;
+    width: 100px;
     margin: 50px 25px;
     border-radius: 5px;
     padding: 20px;
     font-size: 25px;
   } 
-
   .container {
     max-width: 730px;
+  }
+  .LandingPage__banner {
+    background-image: url("../../images/banner.jpg");
+  }
+  .LandingPage__Tagline {
+    width: 45%;
+    margin: auto auto;
+  }
+  .demo-button{
+    width: 200px;
+    font-size: 25px;
+    margin-top: 45px;
+  }
+  .col-right-alt {
+    display: inherit;
+  }
+  .col-top {
+    display: none;
+  }
+  .features {
+    display: flex;
+  }
+  .col-left {
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .features {
+    text-align: inherit;
+  }
+  .bgimage {
+    padding-top: 6em;
   }
 }
 
@@ -204,5 +251,10 @@ p {
 
   .container {
     width: 1170px;
-}
+  }
+
+  .heading {
+    padding-top: 200px;
+    margin: 0.67em 0;
+  }
 }

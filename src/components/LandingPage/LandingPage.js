@@ -24,8 +24,12 @@ const LandingPage = () =>{
           </Link>
         </div>
 
-        <div style={{ paddingTop: "6em" }} className="container-fluid bgimage">
-          <div style={{ display: "flex", alignItems: "center" }} className="container features">
+        <div className="container-fluid bgimage">
+          <div className="container features">
+            <div className="col-top">
+              <img src={require("../../images/smartmockups_k37xvb9w.png")} alt="screenshot-1" className="img-responsive1" />
+            </div>
+            
             <div className="col-left">
               <h2>Made Simple</h2>
               <p style={{ fontSize: "1.2em", marginBottom: "1em" }}>Join now and start saving those precious moments. It's that easy.</p>
@@ -34,14 +38,14 @@ const LandingPage = () =>{
               </Link>
             </div>
 
-            <div className="col-right">
+            <div className="col-right col-right-alt">
               <img src={require("../../images/smartmockups_k37xvb9w.png")} alt="screenshot-1" className="img-responsive1" />
             </div>
           </div>
         </div>
 
-        <div style={{ paddingTop: "6em" }} className="container-fluid bgimage">
-          <div style={{ display: "flex", alignItems: "center" }} className="container features">
+        <div className="container-fluid bgimage">
+          <div className="container features">
             <div className="col-right">
               <img src={require("../../images/smartmockups_k37xwkjj.png")} alt="screenshot-1" className="img-responsive2" />
             </div>
@@ -50,7 +54,7 @@ const LandingPage = () =>{
               <h2>Create Those Moments</h2>
               <p style={{ fontSize: "1.2em", marginBottom: "1em" }}>After you've registered and login. Get taken to your personnel dashboard where you will find all of your Moments. Add, Edit and Delete as you will. It's REALLY that easy!</p>
               <Link to="/login">
-                <Button className="button demo-button joinNow-button" style={{ float: "right" }}>Login Now</Button>
+                <Button className="button demo-button joinNow-button">Login Now</Button>
               </Link>
             </div>
 

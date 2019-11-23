@@ -1,5 +1,10 @@
 .AddPostForm {
-  height: 460px;
+  height: 450px;
+}
+
+#post_content {
+  width: 95%;
+  height: 120px;
 }
 
 @media screen and (min-width: 992px) {

@@ -9,14 +9,15 @@
 
 .Header h1 {
   margin: auto 1vw;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  font-family: "Times New Roman",Georgia,Times,serif;
 }
 
 .Header a {
   color: #000;
   text-decoration: none;
   margin-right: 10px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .Header span {
