@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component renders without crashing 1`] = `
+<nav
+  className="Header"
+  style={
+    Object {
+      "borderBottom": "1px solid #eee",
+    }
+  }
+>
+  <h1>
+    <Link
+      to="/"
+    >
+      PLM
+    </Link>
+  </h1>
+  <div
+    className="SignOut"
+  >
+    <div
+      className="Header__not-logged-in"
+    >
+      <Link
+        to="/login"
+      >
+        Login
+      </Link>
+      <Link
+        to="/register"
+      >
+        Sign Up
+      </Link>
+    </div>
+  </div>
+</nav>
+`;

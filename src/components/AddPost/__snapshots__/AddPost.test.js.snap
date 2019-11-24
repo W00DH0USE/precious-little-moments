@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add Post component renders without crashing 1`] = `
+<Form
+  className="AddPostForm"
+  onSubmit={[Function]}
+>
+  <div
+    className="post_title-div"
+  >
+    <h2
+      className="Form__title"
+    >
+      Precious Little Moment: 
+      <span>
+        <em>
+          create a moment
+        </em>
+      </span>
+    </h2>
+    <hr />
+    <label
+      htmlFor="post_title"
+    >
+      Moment Title 
+      <Required />
+    </label>
+    <Input2
+      id="post_title"
+      name="post_title"
+      required={true}
+      type="text"
+    />
+  </div>
+  <div
+    className="post_content-div"
+  >
+    <label
+      htmlFor="post_content"
+    >
+      Moment Content 
+      <Required />
+    </label>
+    <Textarea
+      autoComplete="off"
+      id="post_content"
+      name="post_content"
+      placeholder="Write about your moment..."
+      required={true}
+    />
+  </div>
+  <Button
+    className="button demo-button"
+    type="submit"
+  >
+    Create
+  </Button>
+</Form>
+`;

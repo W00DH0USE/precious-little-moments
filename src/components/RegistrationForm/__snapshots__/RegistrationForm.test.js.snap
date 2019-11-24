@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Registration Form Component renders without crashing 1`] = `
+<Form
+  className="RegistrationForm"
+  onSubmit={[Function]}
+>
+  <div
+    role="alert"
+  >
+    <p
+      className="red"
+    >
+       
+    </p>
+  </div>
+  <div
+    className="first_name"
+  >
+    <h2
+      className="Form__title"
+    >
+      Precious Little Moment: 
+      <span>
+        <em>
+          sign up
+        </em>
+      </span>
+    </h2>
+    <hr />
+    <label
+      htmlFor="first_name"
+    >
+      First Name 
+      <Required />
+    </label>
+    <Input2
+      autoComplete="off"
+      id="first_name"
+      name="first_name"
+      required={true}
+      type="text"
+    />
+  </div>
+  <div
+    className="last_name"
+  >
+    <label
+      htmlFor="last_name"
+    >
+      Last Name 
+      <Required />
+    </label>
+    <Input2
+      autoComplete="off"
+      id="last_name"
+      name="last_name"
+      required={true}
+      type="text"
+    />
+  </div>
+  <div
+    className="user_name"
+  >
+    <label
+      htmlFor="email"
+    >
+      Email 
+      <Required />
+    </label>
+    <Input2
+      autoComplete="off"
+      id="email"
+      name="email"
+      required={true}
+      type="email"
+    />
+  </div>
+  <div
+    className="password"
+  >
+    <label
+      htmlFor="password"
+    >
+      Password 
+      <Required />
+    </label>
+    <Input2
+      autoComplete="off"
+      id="password"
+      name="password"
+      required={true}
+      type="password"
+    />
+  </div>
+  <Button
+    className="button demo-button"
+    style={
+      Object {
+        "width": "200px",
+      }
+    }
+    type="submit"
+  >
+    Register
+  </Button>
+</Form>
+`;
