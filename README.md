@@ -1,64 +1,41 @@
-# SoberFriends
+# Precious Little Moments
 
-SoberFriends aims to help people quit their addiction by tracking their progress, and having a community of people going through the same thing for support.
+## Getting Started
+#### Live Link: [Precious Little Moments App](https://?)
+#### GitHub Repo: [Precious Little Moments Client](https://github.com/W00DH0USE/precious-little-moments/)
+#### GitHub Repo: [Precious Little Moments Server](https://github.com/W00DH0USE/precious-little-moments-server/)
 
-## Motivation
+#### Demo Account:
+#### Username: Demo_User
+#### Password: Password1!
 
-I wanted to build an app for people going through quitting their addiction, because I know when you are quitting it can be tough to stay motivated. Also some people may feel like they are alone and have no support. This app aims to solve that by having a community, as well as allowing the user to see their progress by tracking how much money they have saved and how many days they have been stopped their addiction for.
+### Introduction
+Precious Little Moments is an App that allows parents or guardians of children to save and share those precious moments you have of them. Look back on your time with them a year, a month, and a week ago. See how your lives have changed over time and the progress your little ones have made. Remember those moments and experiences and never forget the magic of that moment. Reading your memories is as easy as registering, logging in, writing a new entry and hitting create.
 
-## Demo
+![Precious Little Moments Home Page](./public/images/home.png)
+![Precious Little Moments Register Page](./public/images/register.png)
+![Precious Little Moments Login Page](./public/images/login.png)
+![Precious Little Moments Profile Page](./public/images/profile.png)
+![Precious Little Moments Create Moment Page](./public/images/create-moment.png)
 
-- [Live Demo]('https://soberfriends.herokuapp.com/')
+## Getting Started
+### Installing
+Clone the repository and download dependencies.
+```
+$ git clone https://github.com/W00DH0USE/precious-little-moments.git
+$ cd precious-little-moments
+$ npm i
+```
 
-## Screenshots
-
-Landing Page:
-![Image of SoberFriends Landing Page](https://github.com/A1Arman/SoberFriends/blob/master/src/screenshots/Landing.PNG)
-
-Dashboard:
-![Image of SoberFriends Dashboard](https://github.com/A1Arman/SoberFriends/blob/master/src/screenshots/Dashboard.PNG)
-
-Create Post:
-![Image of SoberFriends Add Post Page](https://github.com/A1Arman/SoberFriends/blob/master/src/screenshots/Add%20Post.PNG)
-
-Post Page:
-![Image of SoberFriends Posts Page](https://github.com/A1Arman/SoberFriends/blob/master/src/screenshots/Posts.PNG)
-
-Profile:
-![Image of SoberFriends Profile Page](https://github.com/A1Arman/SoberFriends/blob/master/src/screenshots/Profile.PNG)
+### Launching
+Start the client.
+```
+$ npm start
+```
+This will automatically open a new browser window with the project.
 
 ## Built With
 
-### Front-end
-- React
-- Vanilla JavaScript
-- HTML
-- CSS
-
-### Back-End
-- PostgreSQL
-- Express
-- Node
-- Knex
-
-### Testing
-- Mocha
-- Chai
-- Jest
-- Enzyme
-
-### Authentication
-- bcrypt
-- JWTs
-
-## Features
-- Create Account
-- Create a Post
-- Comment on Posts
-- See Comments on Posts
-- Like Posts
-- Unlike Posts
-- Track money saved and days off addiction
-- Update Posts
-- Delete Posts 
-- Delete Account
+ - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3)
+ - [React](https://reactjs.org/)
+ - [JWT](https://jwt.io/)

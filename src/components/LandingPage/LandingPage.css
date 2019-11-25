@@ -84,9 +84,8 @@ p {
   margin-left: auto;
 }
 
-.features,
 .HomePage__Footer {
-  background-image: url(https://new.thelittlememory.com/assets/images/leather-6f6902d873a5b06d39660840e6e22162.png);
+  /* background-image: url(https://new.thelittlememory.com/assets/images/leather-6f6902d873a5b06d39660840e6e22162.png); */
 }
 
 .features {
