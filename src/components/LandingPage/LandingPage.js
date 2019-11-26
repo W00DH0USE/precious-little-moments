@@ -52,7 +52,7 @@ const LandingPage = () =>{
 
             <div className="col-left">
               <h2>Create Those Moments</h2>
-              <p style={{ fontSize: "1.2em", marginBottom: "1em" }}>After you've registered and login. Get taken to your personnel dashboard where you will find all of your Moments. Add, Edit and Delete as you will. It's REALLY that easy!</p>
+              <p style={{ fontSize: "1.2em", marginBottom: "1em" }}>After you've registered and logged in, Get taken to your personnel profile where you will find all of your Moments. Add, Edit and Delete as you will. It's REALLY that easy!</p>
               <Link to="/login">
                 <Button className="button demo-button joinNow-button">Login Now</Button>
               </Link>
