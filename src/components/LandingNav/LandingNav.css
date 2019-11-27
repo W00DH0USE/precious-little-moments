@@ -1,0 +1,50 @@
+.Header {
+  height: 50px;
+  display: flex;
+  align-items: normal;
+  justify-content: space-between;
+  background-color: #fff;
+  border-color: 1px solid #eee;
+}
+
+.Header h1 {
+  margin: auto 1vw;
+  font-size: 1.25rem;
+  font-family: "Times New Roman",Georgia,Times,serif;
+}
+
+.Header a {
+  color: #000;
+  text-decoration: none;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.Header span {
+  font-size: 15px;
+}
+
+.plm-logo {
+  height: 27px;
+}
+
+.SignOut {
+  margin: auto 5px;
+}
+
+.SignOut a:hover {
+  transition: .3s;
+  border-bottom: 1px solid orange;
+}
+
+@media screen and (min-width: 768px) {
+
+  .Header a {
+    font-size: 2rem;
+  }
+
+  .SignOut a {
+    font-size: 14px;
+    margin-right: 20px;
+  }
+}

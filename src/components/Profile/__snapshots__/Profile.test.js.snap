@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profile Component renders without crashing 1`] = `
+exports[`Profile component renders without crashing 1`] = `
 <Fragment>
-  <div>
-    Loading
-  </div>
+  <Loader />
 </Fragment>
 `;

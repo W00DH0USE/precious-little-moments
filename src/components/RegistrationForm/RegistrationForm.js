@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import "./RegistrationForm.css";
 import { Button, Required, Form, Input2 } from "../Utils/Utils";
+import TokenService from '../../services/token-service';
 import config from '../../config';
 
 const { API_BASE_URL } = config
@@ -41,7 +42,12 @@ export default class RegistrationForm extends Component {
       }
     })
     .then(user => {
-      window.location.href = '/login'
+      TokenService.saveAuthToken(user.authToken);
+      this.setState({
+        loggedIn: true,
+        isLoading: false,
+      });
+      window.location.href = '/profile'
     })
     .catch(error => {
       this.setState({error: error})

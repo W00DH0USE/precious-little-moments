@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import TokenService from '../../services/token-service';
-import { Button } from "../Utils/Utils";
 import moment from 'moment';
+import TokenService from '../../services/token-service';
+import Loader from '../Loader/Loader';
 import config from '../../config';
-import UpdatePost from '../UpdatePost/UpdatePost';
-import DeleteAccount from '../DeleteAccount/DeleteAccount';
-import DeletePost from '../DeletePost/DeletePost';
+import UpdateMyPost from '../UpdateMyPost/UpdateMyPost';
+import DeleteMyAccount from '../DeleteMyAccount/DeleteMyAccount';
+import DeleteMyPost from '../DeleteMyPost/DeleteMyPost';
 import './Profile.css';
 
 const {API_BASE_URL} = config;
@@ -13,7 +13,7 @@ const {API_BASE_URL} = config;
 function useMergeState(initialState) {
   const [state, setState] = useState(initialState);
   const setMergedState = newState => 
-    setState(prevState => Object.assign({}, prevState, newState)
+      setState(prevState => Object.assign({}, prevState, newState)
   );
   return [state, setMergedState];
 }
@@ -24,6 +24,7 @@ function Profile(props) {
     myPost: [],
     isLoading: true,
   })
+
 
   async function getUser() {
     const options = {
@@ -48,20 +49,26 @@ function Profile(props) {
     }
   }
 
+    
+
   useEffect(() => {
     getUser();
   }, []);
+
 
   const {user, myPost, isLoading} = userRequest;
 
   return (
     <>
-      {isLoading ? <div>Loading</div> : (
+      {isLoading ? <Loader {...props} /> : (
         <main className="profile-main" role="main">
           <header className="heading" role="banner">
             <h1>Welcome {user.first_name} {user.last_name}</h1>
             <hr className="LandingPage-hr"></hr>
           </header>
+          {props.isShowingUpdate ? <UpdateMyPost className='modal' validate={props.validation} postId={props.postId} handleUpdateSubmit={props.handleUpdateSubmit} posts={myPost} show={props.isShowingUpdate} close={props.closeModalUpdateHandler}></UpdateMyPost> : null}
+          {props.isShowingDelete ? <DeleteMyAccount className='modal' handleDelete={props.deleteAccount} show={props.isShowingDelete} close={props.closeModalDeleteHandler}></DeleteMyAccount> : null}
+          {props.isShowingDeletePost ? <DeleteMyPost className='modal' postId={props.postId} handleDelete={props.handleDeletePost} posts={myPost} show={props.isShowingDeletePost} close={props.closeModalDeletePostHandler}></DeleteMyPost> : null}
           <section className='moments'>
             <h3 className="moments-title" id='Moments-title'>Your Moments</h3>
             {!myPost ? <h2>Oops Something Went Wrong</h2> : myPost.map(post => {
@@ -73,22 +80,20 @@ function Profile(props) {
                   <div className="card_content">
                     <h4 className="card_title">{post.post_title}</h4>
                     <p className='card_text'>{post.post_content}</p>
-                    <p className='card_date'>Created on: {moment(post.start_date).format("MM-DD-YYYY")}</p>
-                    <Button className='card-button delete-post-button' onClick={() => {props.openModalDeletePostHandler(post.id); getUser()}}>Delete</Button>
-                    <Button className='card-button update-post-button' onClick={() => props.openModalUpdateHandler(post.id)}>Update</Button>
+                    <p className='card_date'>Created on: {moment(post.start_date).format("MM-DD-YYYY")}</p>       
+                    <button className='card-button delete-post-button' onClick={() => {props.openModalDeletePostHandler(post.id); getUser()}}>Delete</button>
+                    <button className='card-button update-post-button' onClick={() => props.openModalUpdateHandler(post.id)}>Update</button>
                   </div>
                 </section>
               )
             })}
           </section>
-          <div className="delete-account-button-div">
-            <Button className="button demo-button delete-account-button" onClick={props.openModalDeleteHandler}>Delete Account</Button> 
-          </div>  
-          {props.isShowingUpdate ? <UpdatePost className='modal' validate={props.validation} postId={props.postId} handleUpdateSubmit={props.handleUpdateSubmit} posts={myPost} show={props.isShowingUpdate} close={props.closeModalUpdateHandler}></UpdatePost> : null}
-          {props.isShowingDelete ? <DeleteAccount className='modal' handleDelete={props.deleteAccount} show={props.isShowingDelete} close={props.closeModalDeleteHandler}></DeleteAccount> : null}
-          {props.isShowingDeletePost ? <DeletePost className='modal' postId={props.postId} handleDelete={props.handleDeletePost} posts={myPost} show={props.isShowingDeletePost} close={props.closeModalDeletePostHandler}></DeletePost> : null}
+          <button className='button demo-button delete-account-button' onClick={props.openModalDeleteHandler}>Delete Account</button> 
         </main>
       )}
+      {props.isShowingUpdate ? <div onClick={props.closeModalUpdateHandler} className="back-drop"></div> : null }
+      {props.isShowingDelete ? <div onClick={props.closeModalDeleteHandler} className="back-drop"></div> : null }
+      {props.isShowingDeletePost ? <div onClick={props.closeModalDeletePostHandler} className="back-drop"></div> : null }
     </>
   )
 }

@@ -1,64 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Form Component renders without crashing 1`] = `
-<Form
-  className="LoginForm"
-  onSubmit={[Function]}
->
-  <div
-    role="alert"
-  />
-  <div
-    className="user_name"
+exports[`LoginForm component renders without crashing 1`] = `
+<section>
+  <h3>
+    Log In
+  </h3>
+  <form
+    className="login-form"
   >
-    <h2
-      className="Form__title"
+    <div
+      className="grid-container"
     >
-      Precious Little Moment: 
-      <span>
-        <em>
-          login
-        </em>
-      </span>
-    </h2>
-    <hr />
-    <label
-      htmlFor="LoginForm__user_name"
+      <label
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <input
+        id="email"
+        name="email"
+        required={true}
+        type="email"
+      />
+    </div>
+    <div
+      className="grid-container"
     >
-      Email Address 
-      <Required />
-    </label>
-    <Input2
-      id="login-email"
-      name="email"
-      placeholder="Email Address"
-      required={true}
-      type="email"
-    />
-  </div>
-  <div
-    className="password"
-  >
-    <label
-      htmlFor="LoginForm__password"
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        id="password"
+        name="password"
+        required={true}
+        type="password"
+      />
+    </div>
+    <button
+      className="btn-login"
+      type="submit"
     >
-      Password 
-      <Required />
-    </label>
-    <Input2
-      autoComplete="off"
-      id="password"
-      name="password"
-      placeholder="Password"
-      required={true}
-      type="password"
-    />
-  </div>
-  <Button
-    className="button demo-button"
-    type="submit"
-  >
-    Login
-  </Button>
-</Form>
+      CONTINUE
+    </button>
+  </form>
+</section>
 `;

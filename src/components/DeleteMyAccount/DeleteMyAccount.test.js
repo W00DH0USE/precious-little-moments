@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Profile from '../Profile/Profile';
+import DeleteMyAccount from './DeleteMyAccount';
 
 
-describe(`Profile component`, () => {
+describe(`DeleteMyAccount component`, () => {
     it('renders without crashing', () => {
-        const wrapper = shallow(<Profile />);
+        const wrapper = shallow(<DeleteMyAccount />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 });
