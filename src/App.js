@@ -7,6 +7,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import AppNav from './components/AppNav/AppNav';
 import Profile from './components/Profile/Profile';
 import AddPost from './components/AddPost/AddPost';
+import DemoPage from './components/DemoPage/DemoPage';
 import AuthApiService from './services/auth-api-service';
 import TokenService from './services/token-service';
 import config from './config';
@@ -55,18 +56,16 @@ class App extends Component {
       }
     }
 
-    if (this.state.postContentValid) {
-      fetch(`${API_BASE_URL}/posts/${postId}`, options)
-      .then(res => {
-        if (res.ok) {
-          window.location.href='/profile'
-        } else {
-          return res.json().then(error => {
-            throw new Error(error)
-          })
-        }
-      })
-    }
+    fetch(`${API_BASE_URL}/posts/${postId}`, options)
+    .then(res => {
+      if (res.ok) {
+        window.location.href='/profile'
+      } else {
+        return res.json().then(error => {
+          throw new Error(error)
+        })
+      }
+    })
   }
 
   handleSubmit = e => {
@@ -247,31 +246,6 @@ class App extends Component {
     });
 }
 
-  trimfield = (str) => 
-  { 
-    return str.replace(/^\s+|\s+$/g,''); 
-  }
-
-  validate = () =>
-  {
-     var obj1 = document.getElementById('post_title');
-     var obj2 = document.getElementById('post_content');
-         if(this.trimfield(obj1.value) === '') 
-         {      
-            this.setState({postContentValid: false}) 
-            obj1.focus();
-         }
-         else if(this.trimfield(obj2.value) === '')
-         {     
-          this.setState({postContentValid: false})  
-          obj2.focus(); 
-        }
-        else {
-          this.setState({postContentValid: true})
-        }
-  }
-
-
   render() {
     return (
       <div className='App'>
@@ -281,6 +255,7 @@ class App extends Component {
           <Route exact path='/login' render={(props) => <LandingNav {...props} />} />
           <Route exact path='/register' render={(props) => <LandingNav {...props} />} />
           <Route exact path='/addPost' render={(props) => <LandingNav {...props} />} />
+          <Route exact path='/demo' render={(props) => <LandingNav {...props} />} />
           <Route exact path='/profile' render={(props) => <AppNav {...props} handleLogout={this.handleLogOut} />} />
         </header>
         <main className='main-container'>
@@ -291,13 +266,38 @@ class App extends Component {
             component={RegistrationForm}
           />
           <Route exact path='/login' render={(props) => 
-            <LoginForm {...props} isLoading={this.state.isLoading} logInError={this.state.logInError} handleLogin={(event) => this.handleLogin(event)} />} 
+            <LoginForm {...props} 
+              isLoading={this.state.isLoading} 
+              logInError={this.state.logInError} 
+              handleLogin={(event) => this.handleLogin(event)} 
+            />} 
           />
           <Route exact path='/profile' render={(props) => 
-              <Profile {...props} user={this.state.user} validation={this.validate} handleDeletePost={(postId) => this.handleDeletePost(postId)} deleteAccount={this.handleDeleteUser} postId={this.state.postId} closeModalUpdateHandler={this.closeModalUpdateHandler} isShowingDelete={this.state.isShowingDelete} openModalDeleteHandler={this.openModalDeleteHandler} closeModalDeleteHandler={this.closeModalDeleteHandler} 
-                openModalUpdateHandler={(postId) => this.openModalUpdateHandler(postId)} openModalDeletePostHandler={(postId) => this.openModalDeletePostHandler(postId)} closeModalDeletePostHandler={this.closeModalDeletePostHandler} isShowingDeletePost={this.state.isShowingDeletePost} isShowingUpdate={this.state.isShowingUpdate} handleUpdateSubmit={(event) => this.handleUpdateSubmit(event, this.state.postId)}/>}/>
+            <Profile {...props} 
+              user={this.state.user} 
+              handleDeletePost={(postId) => this.handleDeletePost(postId)} 
+              deleteAccount={this.handleDeleteUser} postId={this.state.postId} 
+              closeModalUpdateHandler={this.closeModalUpdateHandler} 
+              isShowingDelete={this.state.isShowingDelete} 
+              openModalDeleteHandler={this.openModalDeleteHandler} 
+              closeModalDeleteHandler={this.closeModalDeleteHandler} 
+              openModalUpdateHandler={(postId) => this.openModalUpdateHandler(postId)} 
+              openModalDeletePostHandler={(postId) => this.openModalDeletePostHandler(postId)} 
+              closeModalDeletePostHandler={this.closeModalDeletePostHandler} 
+              isShowingDeletePost={this.state.isShowingDeletePost} 
+              isShowingUpdate={this.state.isShowingUpdate} 
+              handleUpdateSubmit={(event) => this.handleUpdateSubmit(event, this.state.postId)}
+            />}
+          />
           <Route exact path='/addPost' render={(props) => 
-              <AddPost {...props} contentValid={this.state.postContentValid} handleValidation={this.validate} handleSubmit={(event) => this.handleSubmit(event)} />}/>
+            <AddPost {...props} 
+              contentValid={this.state.postContentValid} 
+              handleSubmit={(event) => this.handleSubmit(event)} 
+            />}
+          />
+          <Route exact path='/demo'
+            component={DemoPage}
+          />
         </main>
         </span>
       </div>

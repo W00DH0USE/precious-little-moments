@@ -26,7 +26,7 @@ function UpdatePost(props) {
                     </div>
                     <div className="modal-footer">
                         <button className="btn-cancel" onClick={props.close}><span>CLOSE</span></button>
-                        <button className="btn-continue" type='submit' onClick={props.validate}><span>CONTINUE</span></button>
+                        <button className="btn-continue" type='submit'><span>CONTINUE</span></button>
                     </div>
                 </form>
             </div>
