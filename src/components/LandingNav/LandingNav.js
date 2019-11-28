@@ -13,6 +13,7 @@ function LandingNav(props) {
       </h1>
 
       {!TokenService.hasAuthToken() ?
+      // Displayed while user is logged out
         <div className="SignOut">
           <div className='Header__not-logged-in'>
             <Link
@@ -26,6 +27,7 @@ function LandingNav(props) {
           </div>
         </div>
         :
+        // Displayed while user is logged in
         <div className="SignOut">
           <div className='Header__logged-in'>
             <Link

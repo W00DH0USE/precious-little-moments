@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import "./RegistrationForm.css";
 import { Button, Required, Form, Input2 } from "../Utils/Utils";
@@ -7,7 +6,6 @@ import Loading from '../Loading/Loading';
 import config from '../../config';
 
 const { API_BASE_URL } = config
-
 
 export default class RegistrationForm extends Component {
    constructor(){
@@ -18,6 +16,7 @@ export default class RegistrationForm extends Component {
     };
   } 
 
+  //Redirects to /profile on successful login
   handleUserSubmit = e => {
     e.preventDefault();
     this.setState({ isLoading: true });

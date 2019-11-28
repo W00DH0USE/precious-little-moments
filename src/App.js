@@ -18,7 +18,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShowing: false,
       isShowingUpdate: false,
       isShowingDelete: false,
       isShowingDeletePost: false,
@@ -35,38 +34,38 @@ class App extends Component {
     }
   }
 
-  handleLogOut = () => {
-    TokenService.clearAuthToken();
-  }
-
-  handleUpdateSubmit = (e, postId) => {
-    e.preventDefault();
-    const post = {
-      post_title: e.target.post_title.value,
-      post_content: e.target.post_content.value
-    }
-
-    const options = {
-      method: 'PATCH',
-      body: JSON.stringify(post),
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization':  `bearer ${TokenService.getAuthToken()}`
-      }
-    }
-
-    fetch(`${API_BASE_URL}/posts/${postId}`, options)
+  // Handles login of existing user, will redirect upon valid login to the profile page
+  handleLogin = event => {
+    this.setState({isLoading: true})
+    event.preventDefault();
+    const { email, password } = event.target
+    AuthApiService.postLogin({
+      email: email.value,
+      password: password.value
+    })
     .then(res => {
-      if (res.ok) {
-        window.location.href='/profile'
+      if (res.error) {
+        return this.setState({logInError: true})
       } else {
-        return res.json().then(error => {
-          throw new Error(error)
-        })
+        return res;
       }
+    })
+    .then(user => {
+      email.value = ''
+      password.value = ''
+      TokenService.saveAuthToken(user.authToken);
+      this.setState({
+        loggedIn: true,
+        isLoading: false,
+      });
+      window.location.href = '/profile'
+    })
+    .catch(err => {
+      this.setState({error: err})
     })
   }
 
+  // Handles the creation of a new moment by the user and posts to the database
   handleSubmit = e => {
     e.preventDefault();
     const post = {
@@ -102,57 +101,36 @@ class App extends Component {
     })
   }
 
-  handleLogin = event => {
-    this.setState({isLoading: true})
-    event.preventDefault();
-    const { email, password } = event.target
-    AuthApiService.postLogin({
-      email: email.value,
-      password: password.value
-    })
-    .then(res => {
-      if (res.error) {
-        return this.setState({logInError: true})
-      } else {
-        return res;
-      }
-    })
-    .then(user => {
-      email.value = ''
-      password.value = ''
-      TokenService.saveAuthToken(user.authToken);
-      this.setState({
-        loggedIn: true,
-        isLoading: false,
-      });
-      window.location.href = '/profile'
-    })
-    .catch(err => {
-      this.setState({error: err})
-    })
-  }
+  // Handles the updating of a moment by the user and a PATCH request is made to the database
+  handleUpdateSubmit = (e, postId) => {
+    e.preventDefault();
+    const post = {
+      post_title: e.target.post_title.value,
+      post_content: e.target.post_content.value
+    }
 
-  handleDeleteUser = () => {
-    fetch(`${API_BASE_URL}/users/user`, {
-      method: "DELETE",
+    const options = {
+      method: 'PATCH',
+      body: JSON.stringify(post),
       headers: {
-        'Authorization': `bearer ${TokenService.getAuthToken()}`
+        'Content-Type': 'application/json',
+        'Authorization':  `bearer ${TokenService.getAuthToken()}`
       }
-    })
+    }
+
+    fetch(`${API_BASE_URL}/posts/${postId}`, options)
     .then(res => {
-      if (!res.ok) {
+      if (res.ok) {
+        window.location.href='/profile'
+      } else {
         return res.json().then(error => {
-          throw new Error(error);
-        });
+          throw new Error(error)
+        })
       }
-    })
-    .then(() => {
-      this.setState({posts: this.state.posts.filter(post => post.owner !== this.state.user.id)})
-      TokenService.clearAuthToken()
-      window.location.href='/'
     })
   }
 
+  // Handles the deletion of a moment by the user and a DELETE request is made to the database
   handleDeletePost = () => {
     const postId = this.state.postId
 
@@ -182,37 +160,44 @@ class App extends Component {
     })
   }
 
+  // Handles the deletion of a user account and a DELETE request is made to the database, then the homepage is rendered
+  handleDeleteUser = () => {
+    fetch(`${API_BASE_URL}/users/user`, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    })
+    .then(res => {
+      if (!res.ok) {
+        return res.json().then(error => {
+          throw new Error(error);
+        });
+      }
+    })
+    .then(() => {
+      this.setState({posts: this.state.posts.filter(post => post.owner !== this.state.user.id)})
+      TokenService.clearAuthToken()
+      window.location.href='/'
+    })
+  }
+
+  // all 'update' prefixes set state
   addPost = post => {
     this.setState({
       posts: [...this.state.posts, post]
     })
   }
 
-  openModalHandler = (id, title) => {
-    this.setState({
-      postId: id,
-      postTitle: title
-    },  function() {
-      this.setState({
-        isShowing: true
-      })
-    });
-  }
-
-  closeModalHandler = () => {
-    this.setState({
-      isShowing: false
-    });
-  }
-
+  // Opens and closes the Delete User Account Modal
   openModalDeleteHandler = () => {
     this.setState({isShowingDelete: true})
   }
-
   closeModalDeleteHandler = () => {
     this.setState({isShowingDelete: false})
   }
 
+  // Opens and closes the Delete Post Modal
   openModalDeletePostHandler = (postId) => {
     this.setState({
         postId: postId
@@ -223,11 +208,11 @@ class App extends Component {
     });
     window.scrollTo(0, 0)
   }
-
   closeModalDeletePostHandler = () => {
     this.setState({isShowingDeletePost: false})
   }  
 
+  // Opens and closes the Update Post Modal
   openModalUpdateHandler = (postId) => {
     this.setState({
         postId: postId
@@ -238,11 +223,15 @@ class App extends Component {
     });
     window.scrollTo(0, 0)
   }
-
   closeModalUpdateHandler = () => {
     this.setState({
       isShowingUpdate: false
     });
+  }
+
+  // Handles the logout of a user by removing token
+  handleLogOut = () => {
+    TokenService.clearAuthToken();
   }
 
   render() {

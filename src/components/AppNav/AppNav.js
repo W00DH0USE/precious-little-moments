@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './AppNav.css';
 
+// Displayed while user is logged in and on the profilePage
 function AppNav(props) {
   return (
     <nav className="Header" style={{ borderBottom: "1px solid #eee" }}>

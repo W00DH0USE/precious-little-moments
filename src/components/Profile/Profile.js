@@ -25,7 +25,7 @@ function Profile(props) {
     isLoading: true,
   })
 
-
+  // When component loads, gets USER and USER-POSTS from the database
   async function getUser() {
     const options = {
       method: 'GET',
@@ -49,6 +49,7 @@ function Profile(props) {
     }
   }
 
+  // Used instead of ComponentDidMount lifecycle
   useEffect(() => {
     getUser();
   }, []);
