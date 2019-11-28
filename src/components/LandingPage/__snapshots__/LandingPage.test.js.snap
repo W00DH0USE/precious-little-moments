@@ -121,7 +121,7 @@ exports[`Landing Page Component renders without crashing 1`] = `
               }
             }
           >
-            After you've registered and login. Get taken to your personnel dashboard where you will find all of your Moments. Add, Edit and Delete as you will. It's REALLY that easy!
+            After you've registered and logged in, Get taken to your personnel profile where you will find all of your Moments. Add, Edit and Delete as you will. It's REALLY that easy!
           </p>
           <Link
             to="/login"

@@ -1,49 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginForm component renders without crashing 1`] = `
-<section>
-  <h3>
-    Log In
-  </h3>
-  <form
-    className="login-form"
+<Fragment>
+  <Form
+    className="LoginForm"
   >
     <div
-      className="grid-container"
+      role="alert"
+    />
+    <div
+      className="user_name"
     >
-      <label
-        htmlFor="email"
+      <h2
+        className="Form__title"
       >
-        Email
+        Precious Little Moment: 
+        <span>
+          <em>
+            login
+          </em>
+        </span>
+      </h2>
+      <hr />
+      <label
+        htmlFor="LoginForm__user_name"
+      >
+        Email Address 
+        <Required />
       </label>
-      <input
-        id="email"
+      <Input2
+        id="login-email"
         name="email"
+        placeholder="Email Address"
         required={true}
         type="email"
       />
     </div>
     <div
-      className="grid-container"
+      className="password"
     >
       <label
-        htmlFor="password"
+        htmlFor="LoginForm__password"
       >
-        Password
+        Password 
+        <Required />
       </label>
-      <input
+      <Input2
+        autoComplete="off"
         id="password"
         name="password"
+        placeholder="Password"
         required={true}
         type="password"
       />
     </div>
-    <button
-      className="btn-login"
+    <Button
+      className="button demo-button"
       type="submit"
     >
-      CONTINUE
-    </button>
-  </form>
-</section>
+      Login
+    </Button>
+  </Form>
+</Fragment>
 `;

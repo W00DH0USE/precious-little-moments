@@ -3,7 +3,7 @@
 exports[`Add Post component renders without crashing 1`] = `
 <Form
   className="AddPostForm"
-  onSubmit={[Function]}
+  id="AddPostForm"
 >
   <div
     className="post_title-div"

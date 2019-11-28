@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppNav component renders without crashing 1`] = `
+exports[`LandingNav component renders without crashing 1`] = `
 <nav
   className="Header"
   style={
@@ -20,22 +20,17 @@ exports[`AppNav component renders without crashing 1`] = `
     className="SignOut"
   >
     <div
-      className="Header__logged-in"
+      className="Header__not-logged-in"
     >
       <Link
-        to="/profile"
+        to="/login"
       >
-        Profile
+        Login
       </Link>
       <Link
-        to="/addPost"
+        to="/register"
       >
-        Create Moment
-      </Link>
-      <Link
-        to="/"
-      >
-        Logout
+        Sign Up
       </Link>
     </div>
   </div>

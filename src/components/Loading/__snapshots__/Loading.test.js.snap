@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading component renders without crashing 1`] = `
+<div
+  className="loading-container"
+>
+  <Spinner
+    size={120}
+    spinnerColor="#FFF"
+    spinnerWidth={2}
+    visible={true}
+  />
+</div>
+`;

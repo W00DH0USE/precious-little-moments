@@ -3,44 +3,53 @@
 exports[`DeleteMyPost component renders without crashing 1`] = `
 <Fragment>
   <div
-    className="modal-wrapper"
-    style={
-      Object {
-        "opacity": "0",
-        "transform": "translateY(-100vh)",
-      }
-    }
+    className="modal-wrapper deletePost"
   >
     <div
-      className="modal-header"
+      className="modal-content"
     >
-      <h3>
-        Delete Post 
-        I might relapse!
-        ?
-      </h3>
-    </div>
-    <div
-      className="modal-body"
-    >
-      <p>
-        Post Deletions Cannot be Undone!
-      </p>
-    </div>
-    <div
-      className="modal-footer"
-    >
-      <button
-        className="btn-cancel"
+      <div
+        className="delete-post-form"
       >
-        CLOSE
-      </button>
-      <button
-        className="btn-continue"
-        type="button"
-      >
-        CONTINUE
-      </button>
+        <div
+          className="delete-post-form-title"
+        >
+          <h2
+            className="Form__title"
+          >
+            Precious Little Moment: 
+            <span>
+              <em>
+                delete moment
+              </em>
+            </span>
+          </h2>
+          <hr />
+          <h3
+            className="delete-post-title"
+          >
+            Delete Moment "
+            I might relapse!
+            "?
+          </h3>
+          <p
+            className="delete-warning"
+          >
+            *Please make sure you would like to delete this moment as this cannot be recovered!*
+          </p>
+        </div>
+        <button
+          className="button demo-button button-continue delete-post-form-btn"
+          type="button"
+        >
+          Delete
+        </button>
+        <button
+          className="button demo-button button-cancel delete-post-form-btn"
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   </div>
 </Fragment>

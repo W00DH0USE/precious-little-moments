@@ -1,79 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UpdateMyPost component renders without crashing 1`] = `
-<section>
+<div
+  className="modal-wrapper updatePostModal"
+>
   <div
-    className="modal-wrapper"
-    style={
-      Object {
-        "opacity": "0",
-        "transform": "translateY(-100vh)",
-      }
-    }
+    className="modal-content"
   >
-    <div
-      className="modal-header"
+    <Form
+      className="update-form"
     >
-      <h3>
-        Update Post
-      </h3>
-    </div>
-    <div
-      className="modal-body"
-    >
-      <form
-        className="update-form"
+      <div
+        className="moment-title"
       >
-        <div
-          className="grid-container"
+        <h2
+          className="Form__title"
         >
-          <label
-            htmlFor="post_title"
-          >
-            Post Title
-          </label>
-          <input
-            defaultValue="I might relapse!"
-            id="post_title"
-            name="post_title"
-            required={true}
-            type="text"
-          />
-        </div>
-        <div
-          className="grid-container"
+          Precious Little Moment: 
+          <span>
+            <em>
+              update moment
+            </em>
+          </span>
+        </h2>
+        <hr />
+        <label
+          htmlFor="post_title"
         >
-          <label
-            htmlFor="post_content"
-          >
-            Content
-          </label>
-          <textarea
-            defaultValue="I am having a terrible day! Nothing is going right and I feel like I am going to relapse."
-            id="post_content"
-            name="post_content"
-            required={true}
-            rows="15"
-            type="text"
-          />
-        </div>
-        <div
-          className="modal-footer"
+          Moment Title 
+          <Required />
+        </label>
+        <Input2
+          defaultValue="I might relapse!"
+          id="post_title"
+          name="post_title"
+          required={true}
+          type="text"
+        />
+      </div>
+      <div
+        className="password"
+      >
+        <label
+          htmlFor="post_content"
         >
-          <button
-            className="btn-cancel"
-          >
-            CLOSE
-          </button>
-          <button
-            className="btn-continue"
-            type="submit"
-          >
-            CONTINUE
-          </button>
-        </div>
-      </form>
-    </div>
+          Content 
+          <Required />
+        </label>
+        <Textarea
+          defaultValue="I am having a terrible day! Nothing is going right and I feel like I am going to relapse."
+          id="post_content"
+          name="post_content"
+          required={true}
+        />
+      </div>
+      <Button
+        className="button demo-button button-continue"
+        type="submit"
+      >
+        Continue
+      </Button>
+      <Button
+        className="button demo-button button-cancel"
+      >
+        Cancel
+      </Button>
+    </Form>
   </div>
-</section>
+</div>
 `;
