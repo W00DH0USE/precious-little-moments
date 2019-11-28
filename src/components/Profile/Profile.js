@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import moment from 'moment';
 import TokenService from '../../services/token-service';
-import Loader from '../Loader/Loader';
+import Loading from '../Loading/Loading';
 import config from '../../config';
 import UpdateMyPost from '../UpdateMyPost/UpdateMyPost';
 import DeleteMyAccount from '../DeleteMyAccount/DeleteMyAccount';
@@ -49,29 +49,27 @@ function Profile(props) {
     }
   }
 
-    
-
   useEffect(() => {
     getUser();
   }, []);
-
 
   const {user, myPost, isLoading} = userRequest;
 
   return (
     <>
-      {isLoading ? <Loader {...props} /> : (
+      {isLoading ? <Loading /> : (
         <main className="profile-main" role="main">
           <header className="heading" role="banner">
             <h1>Welcome {user.first_name} {user.last_name}</h1>
             <hr className="LandingPage-hr"></hr>
           </header>
+          <button className='button demo-button delete-account-button' onClick={props.openModalDeleteHandler}>Delete Account</button>
           {props.isShowingUpdate ? <UpdateMyPost className='modal' validate={props.validation} postId={props.postId} handleUpdateSubmit={props.handleUpdateSubmit} posts={myPost} show={props.isShowingUpdate} close={props.closeModalUpdateHandler}></UpdateMyPost> : null}
           {props.isShowingDelete ? <DeleteMyAccount className='modal' handleDelete={props.deleteAccount} show={props.isShowingDelete} close={props.closeModalDeleteHandler}></DeleteMyAccount> : null}
           {props.isShowingDeletePost ? <DeleteMyPost className='modal' postId={props.postId} handleDelete={props.handleDeletePost} posts={myPost} show={props.isShowingDeletePost} close={props.closeModalDeletePostHandler}></DeleteMyPost> : null}
           <section className='moments'>
             <h3 className="moments-title" id='Moments-title'>Your Moments</h3>
-            {!myPost ? <h2>Oops Something Went Wrong</h2> : myPost.map(post => {
+            {!myPost ? <h2>You have no moments! Click Create Moment to create your first moment</h2> : myPost.map(post => {
               return (
                 <section className='cards' key={post.id}>
                   <div className="card_image">
@@ -88,7 +86,6 @@ function Profile(props) {
               )
             })}
           </section>
-          <button className='button demo-button delete-account-button' onClick={props.openModalDeleteHandler}>Delete Account</button> 
         </main>
       )}
       {props.isShowingUpdate ? <div onClick={props.closeModalUpdateHandler} className="back-drop"></div> : null }

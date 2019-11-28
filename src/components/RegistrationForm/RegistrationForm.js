@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./RegistrationForm.css";
 import { Button, Required, Form, Input2 } from "../Utils/Utils";
 import TokenService from '../../services/token-service';
+import Loading from '../Loading/Loading';
 import config from '../../config';
 
 const { API_BASE_URL } = config
@@ -12,12 +13,14 @@ export default class RegistrationForm extends Component {
    constructor(){
     super()
     this.state = { 
-      error: " " 
+      error: " ",
+      isLoading: false,
     };
   } 
 
   handleUserSubmit = e => {
     e.preventDefault();
+    this.setState({ isLoading: true });
     const { first_name, last_name, email, password } = e.target;
 
     const user = {
@@ -49,15 +52,18 @@ export default class RegistrationForm extends Component {
       });
       window.location.href = '/profile'
     })
-    .catch(error => {
-      this.setState({error: error})
+    .catch(res => {
+      this.setState({error: res.error})
     })
   }
 
   render() {
-     const { error } = this.state; 
+     const { error, isLoading } = this.state; 
     return (
-      <Form className="RegistrationForm" onSubmit={this.handleUserSubmit}>
+      <>
+      {isLoading ? <Loading /> : (
+      <>
+      <Form className="RegistrationForm" onSubmit={this.validatePassword}>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
         <div className="first_name">
           <h2 className="Form__title">Precious Little Moment: <span><em>sign up</em></span></h2>
@@ -108,9 +114,13 @@ export default class RegistrationForm extends Component {
             id="password"
             autoComplete="off"
           ></Input2>
+          <p className="password-requirements">Password must contain one upper case, lower case, number and special character</p>
         </div>
-        <Button className="button demo-button" type="submit" style={{ width: "200px" }}>Register</Button>
+        <Button className="button demo-button" type="submit" style={{ width: "200px" }} >Register</Button>
       </Form>
+      </>
+      )}
+      </>
     );
   }
 }

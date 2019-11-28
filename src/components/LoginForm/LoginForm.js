@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, Form, Input2 , Required} from "../Utils/Utils";
-import Loader from '../Loader/Loader';
+import Loading from '../Loading/Loading';
 
 function LoginForm(props) {
   return (
       <>
-      {props.isLoading ? <Loader {...props} /> : (
+      {props.isLoading ? <Loading {...props} /> : (
       <>
         <Form className="LoginForm" onSubmit={props.handleLogin}>
           <div role="alert">{props.logInError ? <p style={{ color: "red" }}>Incorrect Email or Password</p> : null}</div>

@@ -32,7 +32,7 @@ label{
 }
 
 .Button {
-  order: 1px solid #aaa;
+  border: 1px solid #aaa;
   background-color: #eee;
   font-size: 1.1em;
   border-radius: 4px;

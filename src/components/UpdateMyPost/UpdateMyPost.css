@@ -1,54 +1,34 @@
-.updatePostModal {
-    top: 7.5rem;
+.modal-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-.btn-cancel span, .btn-continue span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-}
-  
-.btn-cancel span::after, .btn-continue span::after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-  
-.btn-cancel:hover span, .btn-continue:hover span {
-    padding-right: 25px;
-}
-  
-.btn-cancel:hover span::after, .btn-continue:hover span::after {
-    opacity: 1;
-    right: 0;
+.update-form {
+  background-color: #fff;
+  margin-top: 50px;
 }
 
-.btn-cancel, .btn-continue {
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-    outline: none;
-    padding: 1rem;
-    transition: all 0.5s;
+.button-continue,
+.button-cancel {
+  width: 100px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 20px;
 }
 
-.btn-cancel {
-    background-color: #265573;
-    float: left;
+.button-continue{
+  background-color: greenyellow;
+  border-color: greenyellow;
 }
 
-.btn-continue {
-    background-color: #265573;
-    float: right;
-}
-
-
-#updatePost-title {
-    color: white;
+.button-cancel{
+  background-color: red;
+  border-color: red;
 }

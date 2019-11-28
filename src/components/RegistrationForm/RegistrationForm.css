@@ -7,13 +7,17 @@ label {
   font-weight:700
 }
 
-
 hr {
   border:0;
   border-top:1px solid #ccc;
   margin-bottom:15px
 }
 
+.password-requirements {
+  font-size: 77%;
+  width: 60%;
+  margin: 0 auto;
+}
 
 @media only screen and (min-width: 768px) {
   .RegistrationForm {

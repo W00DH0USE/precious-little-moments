@@ -1,7 +1,31 @@
-.deletePost {
-    top: 10rem;
+.delete-post-form {
+  background-color: #fff;
+  height: 350px;
+  width: 60%;
+  margin:100px auto 20px;
+  padding:50px;
+  color:#333;
+  border:2px solid #777;
+  border-radius:40px;
+  text-align: center;
+
+
+
+
 }
 
-#deletePostTitle {
-    color: white;
+.delete-post-form-btn {
+  font-size: 1.1em;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+
+.delete-post-title {
+  font-size: 24px;
+}
+
+.delete-warning {
+  color: red;
+  font-size: 15px;
 }

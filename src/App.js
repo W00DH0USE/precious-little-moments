@@ -18,21 +18,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        isShowing: false,
-        isShowingUpdate: false,
-        isShowingDelete: false,
-        isShowingDeletePost: false,
-        posts: [],
-        user: null,
-        logInError: false,
-        loggedIn: false,
-        myPost: [],
-        postId: null,
-        postTitle: null,
-        isLoading: false,
-        postContentValid: false,
-        error: null,
-        likeError: null,
+      isShowing: false,
+      isShowingUpdate: false,
+      isShowingDelete: false,
+      isShowingDeletePost: false,
+      posts: [],
+      user: null,
+      logInError: false,
+      loggedIn: false,
+      myPost: [],
+      postId: null,
+      postTitle: null,
+      isLoading: false,
+      postContentValid: false,
+      error: null,
     }
   }
 
@@ -111,26 +110,26 @@ class App extends Component {
       email: email.value,
       password: password.value
     })
-      .then(res => {
-        if (res.error) {
-          return this.setState({logInError: true})
-        } else {
-          return res;
-        }
-      })
-      .then(user => {
-        email.value = ''
-        password.value = ''
-        TokenService.saveAuthToken(user.authToken);
-        this.setState({
-          loggedIn: true,
-          isLoading: false,
-        });
-        window.location.href = '/profile'
-      })
-      .catch(err => {
-        this.setState({error: err})
-      })
+    .then(res => {
+      if (res.error) {
+        return this.setState({logInError: true})
+      } else {
+        return res;
+      }
+    })
+    .then(user => {
+      email.value = ''
+      password.value = ''
+      TokenService.saveAuthToken(user.authToken);
+      this.setState({
+        loggedIn: true,
+        isLoading: false,
+      });
+      window.location.href = '/profile'
+    })
+    .catch(err => {
+      this.setState({error: err})
+    })
   }
 
   handleDeleteUser = () => {
@@ -140,18 +139,18 @@ class App extends Component {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       }
     })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => {
-            throw new Error(error);
-          });
-        }
-      })
-      .then(() => {
-        this.setState({posts: this.state.posts.filter(post => post.owner !== this.state.user.id)})
-        TokenService.clearAuthToken()
-        window.location.href='/'
-      })
+    .then(res => {
+      if (!res.ok) {
+        return res.json().then(error => {
+          throw new Error(error);
+        });
+      }
+    })
+    .then(() => {
+      this.setState({posts: this.state.posts.filter(post => post.owner !== this.state.user.id)})
+      TokenService.clearAuthToken()
+      window.location.href='/'
+    })
   }
 
   handleDeletePost = () => {
@@ -163,24 +162,24 @@ class App extends Component {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       } 
     })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => {
-            throw new Error(error);
-          })
-        }
-      })
-      .then(() => {
-        this.setState({
-          myPost: this.state.myPost.filter(post => post.id !== postId),
-          posts: this.state.posts.filter(post => post.id !== postId),
-          isShowingDeletePost: false
-        });
-        window.location.reload(true);
-      })
-      .catch(error => {
-        throw new Error(error);
-      })
+    .then(res => {
+      if (!res.ok) {
+        return res.json().then(error => {
+          throw new Error(error);
+        })
+      }
+    })
+    .then(() => {
+      this.setState({
+        myPost: this.state.myPost.filter(post => post.id !== postId),
+        posts: this.state.posts.filter(post => post.id !== postId),
+        isShowingDeletePost: false
+      });
+      window.location.reload(true);
+    })
+    .catch(error => {
+      throw new Error(error);
+    })
   }
 
   addPost = post => {
@@ -190,20 +189,20 @@ class App extends Component {
   }
 
   openModalHandler = (id, title) => {
+    this.setState({
+      postId: id,
+      postTitle: title
+    },  function() {
       this.setState({
-          postId: id,
-          postTitle: title
-      },  function() {
-        this.setState({
-          isShowing: true
-        })
-      });
+        isShowing: true
+      })
+    });
   }
 
   closeModalHandler = () => {
-      this.setState({
-          isShowing: false
-      });
+    this.setState({
+      isShowing: false
+    });
   }
 
   openModalDeleteHandler = () => {
@@ -242,20 +241,20 @@ class App extends Component {
 
   closeModalUpdateHandler = () => {
     this.setState({
-        isShowingUpdate: false
+      isShowingUpdate: false
     });
-}
+  }
 
   render() {
     return (
       <div className='App'>
         <span className='container'>
         <header>
-          <Route exact path='/' render={(props) => <LandingNav {...props} />} />
-          <Route exact path='/login' render={(props) => <LandingNav {...props} />} />
-          <Route exact path='/register' render={(props) => <LandingNav {...props} />} />
-          <Route exact path='/addPost' render={(props) => <LandingNav {...props} />} />
-          <Route exact path='/demo' render={(props) => <LandingNav {...props} />} />
+          <Route exact path='/' render={(props) => <LandingNav {...props} handleLogout={this.handleLogOut} />} />
+          <Route exact path='/login' render={(props) => <LandingNav {...props} handleLogout={this.handleLogOut} />} />
+          <Route exact path='/register' render={(props) => <LandingNav {...props} handleLogout={this.handleLogOut} />} />
+          <Route exact path='/addPost' render={(props) => <LandingNav {...props} handleLogout={this.handleLogOut} />} />
+          <Route exact path='/demo' render={(props) => <LandingNav {...props} handleLogout={this.handleLogOut} />} />
           <Route exact path='/profile' render={(props) => <AppNav {...props} handleLogout={this.handleLogOut} />} />
         </header>
         <main className='main-container'>

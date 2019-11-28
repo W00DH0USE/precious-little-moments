@@ -20,7 +20,7 @@ function AppNav(props) {
             </Link>
             <Link
               to='/addPost'>
-              Create Memory
+              Create Moment
             </Link>
             <Link
               onClick={props.handleLogout}
