@@ -1,6 +1,6 @@
 .RegistrationForm {
   background-color: transparent;
-  height: 500px;
+  height: 530px;
 }
 
 label {
@@ -20,9 +20,13 @@ hr {
   margin: 0 auto;
 }
 
+.red {
+  color: red;
+}
+
 @media only screen and (min-width: 768px) {
   .RegistrationForm {
     width: 450px;
-    height: 500px;
+    height: 530px;
   }
 }

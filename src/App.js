@@ -18,6 +18,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isShowing: false,
       isShowingUpdate: false,
       isShowingDelete: false,
       isShowingDeletePost: false,
@@ -45,7 +46,7 @@ class App extends Component {
     })
     .then(res => {
       if (res.error) {
-        return this.setState({logInError: true})
+        return this.setState({logInError: true, isLoading: false})
       } else {
         return res;
       }
@@ -187,6 +188,22 @@ class App extends Component {
     this.setState({
       posts: [...this.state.posts, post]
     })
+  }
+
+  openModalHandler = (id, title) => {
+    this.setState({
+      postId: id,
+      postTitle: title
+    },  function() {
+      this.setState({
+        isShowing: true
+      })
+    });
+  }
+  closeModalHandler = () => {
+    this.setState({
+      isShowing: false
+    });
   }
 
   // Opens and closes the Delete User Account Modal
