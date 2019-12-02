@@ -6,7 +6,7 @@
 #### GitHub Repo: [Precious Little Moments Server](https://github.com/W00DH0USE/precious-little-moments-server/)
 
 #### Demo Account:
-#### Username: Demo_User
+#### Email: demo_user@demo.com
 #### Password: Password1!
 
 ### Introduction
