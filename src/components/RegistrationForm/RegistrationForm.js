@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TokenService from '../../services/token-service';
 import "./RegistrationForm.css";
 import { Button, Required, Form, Input2 } from "../Utils/Utils";
+import Loading from '../Loading/Loading';
 import config from '../../config';
 
 const { API_BASE_URL } = config
@@ -11,16 +12,15 @@ export default class RegistrationForm extends Component {
    constructor(){
     super()
     this.state = { 
-      error: "", 
+      error: null, 
       passwordError: "",
-      formValid: false,
+      isLoading: null
     };
   } 
 
   handleUserSubmit = e => {
     e.preventDefault();
-    const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]/;
-    this.setState({isLoading: true})
+    this.setState({isLoading: true, error: null})
     const { first_name, last_name, email, password } = e.target;
 
     const user = {
@@ -30,64 +30,32 @@ export default class RegistrationForm extends Component {
       password: password.value,
     }
 
-    if (password.value.startsWith(' ') || password.value.endsWith(' ')) {
-      this.setState({
-        passwordError: "Password must not start or end with empty spaces",
-        formValid: false
-      })
-    } else {
-      this.setState({ formValid: true })
-    }
-
-    if (REGEX_UPPER_LOWER_NUMBER_SPECIAL.test(password.value) === false) {
-      this.setState({
-        passwordError: "Password must contain one upper case, lower case, number and special character",
-        formValid: false
-      })
-    } else {
-      this.setState({ formValid: true })
-    }
-
-    if ((password.value.length > 20) || (password.value.length < 8)) {
-      this.setState({
-        passwordError: "Passwords must be at least 8 characters and not more than 20 characters",
-        formValid: false
-      })
-    } else {
-      this.setState({ formValid: true })
-    }
-
-    if (this.state.formValid === true) {
-      fetch(`${API_BASE_URL}/users`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
-      })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          this.setState({isLoading: false})
-          throw new Error(res.json())
-        }
-      })
-      .then(user => {
-        TokenService.saveAuthToken(user.authToken);
-        window.location.href = '/login'
-      })
-      .catch(error => {
-        this.setState({passwordError: error, isLoading: false})
-      })
-    }
+    fetch(`${API_BASE_URL}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+    .then(user => {
+      TokenService.saveAuthToken(user.authToken);
+      window.location.href = '/login'
+    })
+    .catch(res => {
+      this.setState({ error: res.error, isLoading: false})
+    })
   }
 
   render() {
-     const { passwordError } = this.state; 
+    const { error, isLoading } = this.state
     return (
       <Form className="RegistrationForm" onSubmit={this.handleUserSubmit}>
-        <div role="alert">{passwordError && <p className="red">{passwordError}</p>}</div>
+        <div role="alert">{error && <p className='red'>{error}</p>}</div>
         <div className="first_name">
           <h2 className="Form__title">Precious Little Moment: <span><em>sign up</em></span></h2>
           <hr />
@@ -138,7 +106,11 @@ export default class RegistrationForm extends Component {
             autoComplete="off"
           ></Input2>
         </div>
-        <Button className="button demo-button" type="submit" style={{ width: "200px" }}>Register</Button>
+        {!isLoading ? 
+          <Button className="button demo-button" type="submit" style={{ width: "200px" }}>Register</Button> 
+          :
+          <Button className="button demo-button" type="submit" disabled={isLoading} style={{ width: "200px" }}>Loading...</Button>
+        }
       </Form>
     );
   }

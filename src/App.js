@@ -37,9 +37,10 @@ class App extends Component {
 
   // Handles login of existing user, will redirect upon valid login to the profile page
   handleLogin = event => {
-    this.setState({isLoading: true})
-    event.preventDefault();
+    event.preventDefault()
+    this.setState({isLoading: true, error: null})
     const { email, password } = event.target
+
     AuthApiService.postLogin({
       email: email.value,
       password: password.value
@@ -61,8 +62,37 @@ class App extends Component {
       });
       window.location.href = '/profile'
     })
-    .catch(err => {
-      this.setState({error: err})
+    .catch(res => {
+      this.setState({ error: res.error, isLoading: false })
+    })
+  }
+
+  // Handles login to the demo account, will redirect upon valid login to the profile page
+  handleDemoLogin = event => {
+    event.preventDefault()
+    this.setState({isLoading: true})
+
+    AuthApiService.postLogin({
+      email: "demo_user@demo.com",
+      password: "Password1!"
+    })
+    .then(res => {
+      if (res.error) {
+        return this.setState({isLoading: false})
+      } else {
+        return res;
+      }
+    })
+    .then(user => {
+      TokenService.saveAuthToken(user.authToken);
+      this.setState({
+        loggedIn: true,
+        isLoading: false,
+      });
+      window.location.href = '/profile'
+    })
+    .catch(res => {
+      this.setState({ error: res.error, isLoading: false })
     })
   }
 
@@ -264,8 +294,12 @@ class App extends Component {
           <Route exact path='/profile' render={(props) => <AppNav {...props} handleLogout={this.handleLogOut} />} />
         </header>
         <main className='main-container'>
-          <Route exact path='/' 
-            component={LandingPage}
+        <Route exact path='/' render={(props) => 
+            <LandingPage {...props} 
+              isLoading={this.state.isLoading} 
+              error={this.state.error} 
+              handleDemoLogin={(event) => this.handleDemoLogin(event)} 
+            />} 
           />
           <Route exact path='/register'
             component={RegistrationForm}
@@ -273,7 +307,7 @@ class App extends Component {
           <Route exact path='/login' render={(props) => 
             <LoginForm {...props} 
               isLoading={this.state.isLoading} 
-              logInError={this.state.logInError} 
+              error={this.state.error} 
               handleLogin={(event) => this.handleLogin(event)} 
             />} 
           />

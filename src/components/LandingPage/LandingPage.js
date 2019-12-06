@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faGithub, faLinkedin  } from '@fortawesome/free-brands-svg-icons'
 import './LandingPage.css'
 
-const LandingPage = () =>{
+function LandingPage(props) {
+  
   return (
     <div className="LandingPage__app" style={{ marginTop: "-30px" }}>
       <div className="LandingPage__container">
@@ -18,10 +19,11 @@ const LandingPage = () =>{
             An online diary for parents who want to save and share those precious moments of your little ones.
             </p>
           </section>
-
-          <Link to="/demo">
-            <Button className="button demo-button">Demo</Button>
-          </Link>
+          {!props.isLoading ? 
+            <Button className="button demo-button" onClick={props.handleDemoLogin} style={{ width: "200px" }}>Demo Login</Button> 
+            :
+            <Button className="button demo-button" disabled={props.isLoading} style={{ width: "200px" }}>Loading...</Button>
+          }
         </div>
 
         <div className="container-fluid bgimage">

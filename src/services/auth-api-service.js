@@ -12,9 +12,11 @@ const AuthApiService = {
       },
       body: JSON.stringify({email, password})
     })
-    .then(res => {
-      return res.json();
-    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
   },
   // For adding new user to database
   postUser(user) {
@@ -25,13 +27,11 @@ const AuthApiService = {
       },
       body: JSON.stringify(user)
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json()
-      } else {
-        res.json().then(error => error)
-      }
-    })
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
   }
 }
 
