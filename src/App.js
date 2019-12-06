@@ -7,7 +7,6 @@ import LoginForm from './components/LoginForm/LoginForm';
 import AppNav from './components/AppNav/AppNav';
 import Profile from './components/Profile/Profile';
 import AddPost from './components/AddPost/AddPost';
-import DemoPage from './components/DemoPage/DemoPage';
 import AuthApiService from './services/auth-api-service';
 import TokenService from './services/token-service';
 import config from './config';
@@ -333,9 +332,6 @@ class App extends Component {
               contentValid={this.state.postContentValid} 
               handleSubmit={(event) => this.handleSubmit(event)} 
             />}
-          />
-          <Route exact path='/demo'
-            component={DemoPage}
           />
         </main>
         </span>
