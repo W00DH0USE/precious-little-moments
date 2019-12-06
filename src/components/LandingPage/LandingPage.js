@@ -20,7 +20,7 @@ function LandingPage(props) {
             </p>
           </section>
           {!props.isLoading ? 
-            <Button className="button demo-button" onClick={props.handleDemoLogin} style={{ width: "200px" }}>Demo Login</Button> 
+            <Button className="button demo-button" onClick={props.handleDemoLogin} style={{ width: "200px" }}>Demo Login<span class="tooltiptext">Email: demo_user@demo.com<br />Password: Password1!</span></Button> 
             :
             <Button className="button demo-button" disabled={props.isLoading} style={{ width: "200px" }}>Loading...</Button>
           }
