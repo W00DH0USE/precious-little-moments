@@ -64,9 +64,9 @@ function Profile(props) {
             <h1>Welcome {user.first_name} {user.last_name}</h1>
             <hr className="LandingPage-hr"></hr>
           </header>
-          <button className='button demo-button delete-account-button' disabled={user.first_name === "Demo"} onClick={props.openModalDeleteHandler}>Delete Account</button>
+          <button className='button demo-button delete-account-button' onClick={props.openModalDeleteHandler}>Delete Account</button>
           {props.isShowingUpdate ? <UpdateMyPost className='modal' validate={props.validation} postId={props.postId} handleUpdateSubmit={props.handleUpdateSubmit} posts={myPost} show={props.isShowingUpdate} close={props.closeModalUpdateHandler}></UpdateMyPost> : null}
-          {props.isShowingDelete ? <DeleteMyAccount className='modal' handleDelete={props.deleteAccount} show={props.isShowingDelete} close={props.closeModalDeleteHandler}></DeleteMyAccount> : null}
+          {props.isShowingDelete ? <DeleteMyAccount className='modal' handleDelete={props.deleteAccount} show={props.isShowingDelete} close={props.closeModalDeleteHandler} cUser={user.first_name}></DeleteMyAccount> : null}
           {props.isShowingDeletePost ? <DeleteMyPost className='modal' postId={props.postId} handleDelete={props.handleDeletePost} posts={myPost} show={props.isShowingDeletePost} close={props.closeModalDeletePostHandler}></DeleteMyPost> : null}
           <section className='moments'>
             <h3 className="moments-title" id='Moments-title'>Your Moments</h3>

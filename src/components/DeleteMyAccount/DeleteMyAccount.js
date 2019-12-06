@@ -13,7 +13,7 @@ function DeleteMyAccount(props) {
             <h3 className='delete-post-title'>Delete Your Account?</h3>
             <p className="delete-warning">*Please make sure you would like to delete your account as your moment's cannot be recovered!*</p>
           </div>
-          <Button className="button demo-button button-cancel" type="submit">Delete</Button>
+          <Button className="button demo-button button-cancel" disabled={props.cUser === "Demo"} type="submit" title="Disabled for this account!">Delete</Button>
           <Button className="button demo-button button-continue" onClick={props.close}>Cancel</Button>
         </Form>
       </div>

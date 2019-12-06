@@ -34,7 +34,7 @@
 
 .SignOut a:hover {
   transition: .3s;
-  border-bottom: 1px solid orange;
+  border-bottom: 1px solid red;
 }
 
 @media screen and (min-width: 768px) {
